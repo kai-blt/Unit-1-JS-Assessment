@@ -168,7 +168,25 @@ function getNthFilm(character, filmNumber) {
 function getCargoCapacityTotal(character) {
   const ships = character.starships;
   const vehicles = character.vehicles;
-  return ships.reduce((total, ship) => total + parseInt(ship.cargo_capacity), 0) + vehicles.reduce((total, vehicle) => total + parseInt(vehicle.cargo_capacity), 0);
+  let totalCapacity = 0;
+
+  ships.forEach(ship => {
+    if (ship.cargo_capacity === null) {
+      totalCapacity += 0;
+    } else {
+      totalCapacity += parseInt(ship.cargo_capacity);
+    }
+  });
+
+  vehicles.forEach(ship => {
+    if (ship.cargo_capacity === null) {
+      totalCapacity += 0;
+    } else {
+      totalCapacity += parseInt(ship.cargo_capacity);
+    }
+  });
+
+  return totalCapacity;
 }
 
 
