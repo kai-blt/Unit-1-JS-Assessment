@@ -166,8 +166,17 @@ function getNthFilm(character, filmNumber) {
  * Sample data expected output: 80124
 */
 function getCargoCapacityTotal(character) {
-  // TODO: Add your code here.
+  const ships = character.starships;
+  const vehicles = character.vehicles;
+  return ships.reduce((total, ship) => total + parseInt(ship.cargo_capacity), 0) + vehicles.reduce((total, vehicle) => total + parseInt(vehicle.cargo_capacity), 0);
+
 }
+
+
+
+
+
+
 
 /**
  * ### Challenge `getFastestStarshipName`
@@ -181,8 +190,25 @@ function getCargoCapacityTotal(character) {
  * Sample data expected output: `X-wing`
 */
 function getFastestStarshipName(character) {
-  // TODO: Add your code here.
+  let currFastestShip = "";
+  const starships = character.starships;
+  if (starships.length !== 0) {
+    starships.reduce((previousShip, currShip) => {
+     if (parseInt(previousShip.max_atmosphering_speed) > parseInt(currShip.max_atmosphering_speed)) {
+        currFastestShip = previousShip.name;
+     } else {
+        currFastestShip = currShip.name
+     } 
+    });
+    return currFastestShip;
+  } else {
+    return 'none';
+  }
 }
+
+
+
+
 
 /**
  * ### Challenge `getLargestCargoStarshipModelName`
