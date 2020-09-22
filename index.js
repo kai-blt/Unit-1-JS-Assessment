@@ -111,7 +111,7 @@ function getVehiclesCostInCreditsSumTotal(character) {
 function getStarshipPassengerAndCrewSumTotal(character) {
   const ships = character.starships;
   const shipSum = [];
-  if (ships.length === 0) {
+  if (ships.length === 0) { //If no ships return 0
     return 0
   } else {
     ships.forEach(ship => shipSum.push(ship.passengers + ship.crew));
@@ -140,10 +140,10 @@ function getStarshipPassengerAndCrewSumTotal(character) {
  * Given film #7, expected error: `There are only 3 Star Wars movies. Flan fiction excluded.`
 */
 function getNthFilm(character, filmNumber) {
-  if (filmNumber > 3) {
+  if((filmNumber > 3) || (filmNumber === 0)) {
     return 'Only the original trilogy exists! Do not concern yourself with matters of the dark side...'
   } else {
-    return character.films[filmNumber];
+    return character.films[filmNumber - 1]; //decrement filmNumber to match array indexing
   }
 }
 
