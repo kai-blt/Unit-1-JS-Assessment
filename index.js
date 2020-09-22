@@ -109,8 +109,22 @@ function getVehiclesCostInCreditsSumTotal(character) {
  * Sample data expected output: 27
 */
 function getStarshipPassengerAndCrewSumTotal(character) {
-  // TODO: Add your code here.
+  const ships = character.starships;
+  const shipSum = [];
+  if (ships.length === 0) {
+    return 0
+  } else {
+    ships.forEach(ship => shipSum.push(ship.passengers + ship.crew));
+    return shipSum.reduce((total, acc) => total + acc);
+  }
 }
+
+
+
+
+
+
+
 
 /**
  * ### Challenge `getNthFilm`
@@ -126,8 +140,20 @@ function getStarshipPassengerAndCrewSumTotal(character) {
  * Given film #7, expected error: `There are only 3 Star Wars movies. Flan fiction excluded.`
 */
 function getNthFilm(character, filmNumber) {
-  // TODO: Add your code here.
+  if (filmNumber > 3) {
+    return 'Only the original trilogy exists! Do not concern yourself with matters of the dark side...'
+  } else {
+    return character.films[filmNumber];
+  }
 }
+
+
+
+
+
+
+
+
 
 /**
  * ### Challenge `getCargoCapacityTotal`
